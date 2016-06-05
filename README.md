@@ -13,7 +13,7 @@ Run `go help buildmodes` to learn more about Go's build modes.
 ### Why?
 
 1. It's cool.
-2. Go is much faster than Python. You can rewrite slow parts of your code in Go, and call them from your Python code. See [benchmarks](#benchmark).
+2. Go is much faster than Python. You can rewrite slow parts of your code in Go, and call them from your Python code. See [benchmarks](#benchmarks).
 3. It's cool.
 
 ### Benchmarks
