@@ -13,7 +13,7 @@ Run `go help buildmodes` to learn more about Go's build modes.
 ### Why?
 
 1. It's cool.
-2. Go is much faster than Python. You can rewrite slow parts of your code in Go, and call them from your Python code.
+2. Go is much faster than Python. You can rewrite slow parts of your code in Go, and call them from your Python code. See [benchmarks](#benchmark).
 3. It's cool.
 
 ### Benchmarks
@@ -22,18 +22,30 @@ Benchmarks are the best way to compare the performance and really show the **coo
 
 *The function to benchmark:* Find the first 40 Fibonacci numbers. That is `Fib` function will be called with `n` from `1...40`. The execution time of the full loop is then measured.
 
+*Results*: `libfib` is 76X faster!!!1111
+
 #### Pure Python implementation
 
-`benchmark.py` implements the same Fibonacci function in pure Python. Here's the result of the Linux `time` command:
+`benchmark.py` implements the same Fibonacci function in pure Python.Here's the result of the Linux `time` command:
 
 ```
+$ time python benchmark.py
 
+real  2m26.726s
+user  2m6.232s
+sys 0m2.280s
 ```
+
+#### Shared library implementation
 
 `benchmark_libfib.py` calls the Fibonacci function in the shared library from Python. Here's the result of the Linux `time` command:
 
 ```
+$ time python benchmark_libfib.py
 
+real  0m1.899s
+user  0m1.593s
+sys 0m0.039s
 ```
 
 ### Creating the shared objects file
@@ -53,3 +65,7 @@ import ctypes
 lib = ctypes.CDLL("libfib.so")
 print(lib.Fib(20))
 ```
+
+### License
+
+MIT (c) Karan Goel
